@@ -6,33 +6,26 @@ export const createBook = async (req, res) => {
 
   try {
     const { title, author, description, price } = req.body;
-    // Check if files are uploaded
+
     const file = req.files?.file?.[0];
     const coverImage = req.files?.coverImage?.[0];
-    
 
     if (!file || !coverImage) {
       return res.status(400).json({ error: 'Book file and cover image are required' });
     }
 
-    // Upload files to Cloudinary
-    const bookFileUpload = await cloudinary.uploader.upload(file.path, {
-      resource_type: 'raw', // For non-image files
-      folder: 'books',
-    });
+    
+    const bookFileUrl = file.path; 
+    const coverImageUrl = coverImage.path; 
 
-    const coverImageUpload = await cloudinary.uploader.upload(coverImage.path, {
-      folder: 'book_covers',
-    });
-
-    // Create the book record
+    // Create the book record in your database
     const book = await bookService.createBook({
       title,
       author,
       description,
       price,
-      filePath: bookFileUpload.secure_url, // Store the Cloudinary URL
-      coverImagePath: coverImageUpload.secure_url,
+      filePath: bookFileUrl,
+      coverImagePath: coverImageUrl,
       userId,
     });
 
@@ -42,9 +35,6 @@ export const createBook = async (req, res) => {
     res.status(500).json({ error: 'Failed to create book' });
   }
 };
-
-
-
 
 export const getBooks = async (req, res) => {
   const userId = req.user.id;

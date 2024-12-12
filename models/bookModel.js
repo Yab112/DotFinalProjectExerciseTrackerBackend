@@ -5,8 +5,8 @@ const bookSchema = new mongoose.Schema({
   author: { type: String, required: true },
   description: { type: String },
   price: { type: Number, required: true },
-  filePath: { type: String, required: true }, // Cloudinary URL for the book file
-  coverImagePath: { type: String, required: true }, // Cloudinary URL for the cover image
+  filePath: { type: String, required: false }, 
+  coverImagePath: { type: String, required: false }, 
   userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
 }, { timestamps: true });
 
