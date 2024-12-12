@@ -11,7 +11,7 @@ const login = async (data) => {
     const user = await userRepository.findUserByUsername(data.email);
     
     if (!user || !(await bcrypt.compare(data.password, user.password))) {
-      throw new Edrror("Invalid credentials");
+      throw new error("Invalid credentials");
     }
     const token =jwt.sign(
         { id: user._id, username: user.username }, 
@@ -23,7 +23,6 @@ const login = async (data) => {
         username: user.username,
         email: user.email,
         profilePicture: user.profilePicture, 
-        roles: user.roles || [], 
         lastLogin: user.lastLogin, 
         token, 
         expiresIn: process.env.JWT_EXPIRES_IN
