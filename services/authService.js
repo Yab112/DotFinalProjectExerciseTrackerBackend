@@ -9,9 +9,7 @@ const register = async (data) => {
 
 const login = async (data) => {
     const user = await userRepository.findUserByUsername(data.email);
-    console.log("Login data:", data);
-    console.log("User found:", user);
-  
+    
     if (!user || !(await bcrypt.compare(data.password, user.password))) {
       throw new Edrror("Invalid credentials");
     }

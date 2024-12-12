@@ -1,14 +1,15 @@
 import bookRepository from '../repositories/bookRepository.js';
 
+
 const createBook = async (bookData) => {
-    try {
-      return await bookRepository.createBook(bookData);
-    } catch (error) {
-      console.error("Error creating book:", error);
-      throw new Error("Failed to create book");
-    }
-  };
- 
+  try {
+    return await bookRepository.createBook(bookData);
+  } catch (error) {
+    console.error('Error in service:', error);
+    throw new Error('Service error: Failed to create book');
+  }
+};
+
 
 const getBooks = async (userId) => {
   return await bookRepository.getBooksByUser(userId);
