@@ -19,6 +19,6 @@ router.post(
   createBook
 );
 router.get("/", authMiddleware, getBooks);
-router.delete("/delete", authMiddleware, deleteBook);
+router.delete("/delete/:bookId", authMiddleware, deleteBook);
 
 export default router;

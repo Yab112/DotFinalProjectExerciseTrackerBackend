@@ -55,18 +55,16 @@ export const getBooks = async (req, res) => {
 
 
 export const deleteBook = async (req, res) => {
-  const userId = req.user.id;
-  const { bookId } = req.body;
+  const userId = req.user.id; 
+  const { bookId } = req.params; 
 
   try {
     const book = await bookService.findBookByIdAndUser(bookId, userId);
 
     if (!book) {
-      return res
-        .status(404)
-        .json({
-          error: "Book not found or you don't have permission to delete it.",
-        });
+      return res.status(404).json({
+        error: "Book not found or you don't have permission to delete it.",
+      });
     }
 
     // Delete the book
@@ -78,3 +76,4 @@ export const deleteBook = async (req, res) => {
     res.status(500).json({ error: "Failed to delete book." });
   }
 };
+
