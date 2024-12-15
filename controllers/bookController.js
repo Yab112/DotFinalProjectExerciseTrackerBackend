@@ -1,5 +1,4 @@
 import bookService from "../services/bookService.js";
-import cloudinary from '../utils/cloudinary.js';
 
 export const createBook = async (req, res) => {
   const userId = req.user.id;
