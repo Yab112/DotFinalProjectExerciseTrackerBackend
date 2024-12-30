@@ -40,5 +40,18 @@ const findOrCreate = async (profile) => {
   };
   
 
+  const findById = async (id) => {
+    return await User.findById(id);
+  };
+  
+  const updateUser = async (id, updates) => {
+    return await User.findByIdAndUpdate(id, updates, { new: true });
+  };
+  
+  const deleteUser = async (id) => {
+    const result = await User.findByIdAndDelete(id);
+    return !!result; // Returns true if a user was deleted, false otherwise
+  };
+  
 
-export default { createUser, findUserByUsername ,findByVerificationToken,findOrCreate};
+export default { createUser, findUserByUsername ,findByVerificationToken,findOrCreate, findById, updateUser, deleteUser};

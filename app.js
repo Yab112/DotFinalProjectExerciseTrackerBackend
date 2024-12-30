@@ -2,7 +2,7 @@ import express from 'express';
 import dotenv from "dotenv";
 import connectDB from "./config/db.js";
 import authRoutes from "./routes/authRoutes.js";
-import bookRoutes from "./routes/bookRoutes.js";
+import exerciseRoutes from "./routes/ExerciseRoute.js"
 import passport from 'passport';
 import session from 'express-session';
 import cors from "cors";
@@ -34,7 +34,7 @@ app.use(cors({
 
 
 app.use("/api/auth", authRoutes);
-app.use("/api/books", bookRoutes);
+app.use("/api/exercises", exerciseRoutes);
 
 
 
