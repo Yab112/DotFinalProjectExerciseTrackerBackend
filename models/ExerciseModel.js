@@ -10,6 +10,7 @@ const ExerciseSchema = new mongoose.Schema({
   caloriesBurned: { type: Number }, // Optional field
   notes: { type: String }, // Optional field
   type: { type: String, default: "Indoor" }, // Optional field
+  iscomplated: { type: Boolean, default: false }, // Optional field
   location: { type: String }, // Optional field
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now }
