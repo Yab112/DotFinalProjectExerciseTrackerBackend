@@ -25,7 +25,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(cors({
-    origin: ["https://final-session-dot.vercel.app", "http://localhost:5173"], 
+    origin: ["https://final-session-dot.vercel.app", "http://localhost:5173","https://dot-final-project-activity-tracker.vercel.app/"], 
     methods: ["GET", "POST", "PUT", "DELETE"], 
     credentials: true, 
   }));
